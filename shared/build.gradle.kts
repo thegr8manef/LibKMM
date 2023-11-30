@@ -1,14 +1,35 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("maven-publish")
 }
 
 kotlin {
+    jvm()
+    js()
+    mingwX64()
+    linuxX64()
+    val publicationsFromMainHost =
+        listOf(jvm(), js()).map { it.name } + "kotlinMultiplatform"
+    publishing {
+        publications {
+            matching { it.name in publicationsFromMainHost }.all {
+                val targetPublication = this@all
+                tasks.withType<AbstractPublishToMaven>()
+                    .matching { it.publication == targetPublication }
+                    .configureEach { onlyIf { findProperty("isMainHost") == "true" } }
+            }
+        }
+    }
     androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
+        }
+        android{
+            publishLibraryVariants("release", "debug")
+            publishLibraryVariantsGroupedByFlavor = true
         }
     }
     
