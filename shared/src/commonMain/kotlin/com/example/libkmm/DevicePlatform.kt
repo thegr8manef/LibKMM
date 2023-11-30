@@ -1,8 +1,8 @@
 package com.example.libkmm
 
-interface Platform {
+interface DevicePlatform {
     val model: String
     val brand: String
 }
 
-expect fun getPlatform(): Platform
+expect fun getDevicePlatform(): DevicePlatform

@@ -1,10 +1,10 @@
 package com.example.libkmm
 
-import platform.UIKit.UIDevice
+import com.example.libkmm.DevicePlatform.UIKit.UIDevice
 
-class IOSPlatform: Platform {
+class IOSPlatform: DevicePlatform {
     override val model: String = UIDevice.currentDevice.model
     override val brand: String = UIDevice.currentDevice.userInterfaceIdiom
 }
 
-actual fun getPlatform(): Platform = IOSPlatform()
+actual fun getDevicePlatform(): DevicePlatform = IOSPlatform()
