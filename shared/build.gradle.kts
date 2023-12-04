@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -5,6 +7,7 @@ plugins {
 }
 
 kotlin {
+    val xcf = XCFramework()
     jvm()
     js()
     mingwX64()
@@ -41,6 +44,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
+            xcf.add(this)
         }
     }
 
