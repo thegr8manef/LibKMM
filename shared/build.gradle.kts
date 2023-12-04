@@ -51,6 +51,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
+            //classpath ("com.android.tools.build:gradle:7.0.0") // Use the appropriate version
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

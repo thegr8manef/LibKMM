@@ -4,3 +4,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform).apply(false)
     id("maven-publish")
 }
+buildscript {
+    dependencies {
+        classpath ("com.android.tools.build:gradle:8.2.0") // Use the appropriate version
+    }
+}
