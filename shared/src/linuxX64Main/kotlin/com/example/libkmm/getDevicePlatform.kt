@@ -1,5 +1,8 @@
 package com.example.libkmm
 
-actual fun getDevicePlatform(): DevicePlatform {
-    TODO("Not yet implemented")
+class LNXPlatform : DevicePlatform {
+    override val model: String = "LNXPlatformModel"
+    override val brand: String = "LNXPlatformBrand"
 }
+
+actual fun getDevicePlatform(): DevicePlatform = LNXPlatform()
