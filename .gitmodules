@@ -1,0 +1,3 @@
+[submodule "external/LibKMM"]
+	path = external/LibKMM
+	url = https://github.com/thegr8manef/LibKMM.git
